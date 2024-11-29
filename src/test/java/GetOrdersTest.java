@@ -25,7 +25,7 @@ public class GetOrdersTest {
 
     public void getOrdersForAuthUser() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         String accessToken = responseCreate.jsonPath().getString("accessToken");
         Response getOrdersResponse = userClient.getOrdersWithAuthorization(accessToken, user);
@@ -39,7 +39,7 @@ public class GetOrdersTest {
 
     public void getOrdersForNotAuthUser() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response getOrdersResponse = userClient.getOrdersWithOutAuthorization(user);
         Assert.assertEquals("false", getOrdersResponse.jsonPath().getString("success"));

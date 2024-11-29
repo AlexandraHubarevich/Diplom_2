@@ -8,7 +8,7 @@ public class UserClient {
 
 
     @Step(" .post(\"api/auth/register\")")
-    public Response сreateUniqueUser(User user) {
+    public Response createUniqueUser(User user) {
         Response response = given()
                 .header("Content-type", "application/json")
                 .body(user)

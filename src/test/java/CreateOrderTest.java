@@ -32,7 +32,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа: с авторизацией")
     public void createOrderWithAuth() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
 
         Response loginResponse = userClient.loginUser(new User(user.getEmail(), user.getName(), user.getPassword()));
@@ -57,7 +57,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа: без авторизации")
     public void createOrderWithoutAuth() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response loginResponse = userClient.loginUser(new User(user.getEmail(), user.getName(), user.getPassword()));
         Assert.assertEquals("true", loginResponse.jsonPath().getString("success"));
@@ -82,7 +82,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа: с авторизацией, без ингредиентов")
     public void createOrderWithoutIngredients() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response loginResponse = userClient.loginUser(new User(user.getEmail(), user.getName(), user.getPassword()));
         Assert.assertEquals("true", loginResponse.jsonPath().getString("success"));
@@ -104,7 +104,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа: с авторизацией, с неверным хешем ингредиентов")
     public void createOrderWithIncorrectIngredients() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
 
         Response loginResponse = userClient.loginUser(new User(user.getEmail(), user.getName(), user.getPassword()));

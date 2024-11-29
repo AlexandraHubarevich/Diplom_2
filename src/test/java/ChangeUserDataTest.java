@@ -32,7 +32,7 @@ public class ChangeUserDataTest {
     @DisplayName("Изменение данных пользователя: с авторизацией")
     public void changeUserDataWithAuthTest() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         assertEquals("true", responseCreate.jsonPath().getString("success"));
 
         Response responseRegister = userClient.loginUser(user);
@@ -61,7 +61,7 @@ public class ChangeUserDataTest {
     @DisplayName("Изменение данных пользователя: с авторизацией, но пишем старую почту")
     public void changeUserDataWithAuthTestWithOldEmail() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         assertEquals("true", responseCreate.jsonPath().getString("success"));
 
         Response responseRegister = userClient.loginUser(user);
@@ -82,7 +82,7 @@ public class ChangeUserDataTest {
     @DisplayName("Изменение данных пользователя: без авторизации")
     public void changeUserDataWithoutAuthTest() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         assertEquals("true", responseCreate.jsonPath().getString("success"));
 
 

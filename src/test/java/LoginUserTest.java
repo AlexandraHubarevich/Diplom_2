@@ -28,7 +28,7 @@ public class LoginUserTest {
 
     public void createUserAndLoginTest() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response loginResponse = userClient.loginUser(new User(user.getEmail(), user.getName(), user.getPassword()));
         Assert.assertEquals("true", loginResponse.jsonPath().getString("success"));
@@ -42,7 +42,7 @@ public class LoginUserTest {
 
     public void createUserAndLoginWithIncorrectPasswordTest() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response loginResponseIncorrectPassword = userClient.loginUser(new User(user.getEmail(), user.getName(), passwordFake));
         Assert.assertEquals("false", loginResponseIncorrectPassword.jsonPath().getString("success"));
@@ -57,7 +57,7 @@ public class LoginUserTest {
 
     public void createUserAndLoginWithIncorrectEmailTest() {
         User user = new User(email, name, password);
-        Response responseCreate = userClient.сreateUniqueUser(user);
+        Response responseCreate = userClient.createUniqueUser(user);
         Assert.assertEquals("true", responseCreate.jsonPath().getString("success"));
         Response loginResponseIncorrectEmail = userClient.loginUser(new User(emailFake, user.getName(), user.getPassword()));
         Assert.assertEquals("false", loginResponseIncorrectEmail.jsonPath().getString("success"));
